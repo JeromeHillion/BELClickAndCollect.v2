@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Controller;
+
+use App\Entity\User;
+use App\Form\RegistrationType;
+use DateTime;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+class SecurityController extends AbstractController
+{
+  
+    /**
+     * @Route("/inscription", name="security_registration")
+     */
+    public function registration(Request $request){
+        $user = new User();
+        $user->setDateCreated(new DateTime('now'));
+        
+        $form = $this->createForm(RegistrationType::class, $user);
+        $form->handleRequest($request);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        //Si le formulaire est soumis et valide on enregistre dans notre base données
+        if($form->isSubmitted() && $form->isValid()){
+           $entityManager->persist($user);
+           $entityManager->flush();
+        }
+
+        return $this->render('security/registration.html.twig',[
+            'form'=>$form->createView()
+        ]);
+
+    }
+}

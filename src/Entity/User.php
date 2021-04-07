@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -38,7 +39,7 @@ class User
     private $avatar;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $birthday;
 
@@ -48,7 +49,7 @@ class User
     private $address;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $date_created;
 
@@ -56,6 +57,8 @@ class User
      * @ORM\Column(type="string", length=255)
      */
     private $password;
+
+    public $confirm_password;
 
     public function getId(): ?int
     {

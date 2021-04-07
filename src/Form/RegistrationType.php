@@ -6,6 +6,9 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 class RegistrationType extends AbstractType
 {
@@ -15,11 +18,11 @@ class RegistrationType extends AbstractType
             ->add('firstname')
             ->add('name')
             ->add('email')
-            ->add('avatar')
-            ->add('birthday')
+            ->add('avatar', FileType::class)
+            ->add('birthday', DateType::class)
             ->add('address')
-            ->add('date_created')
-            ->add('password')
+            ->add('password', PasswordType::class)
+            ->add('confirm_password', PasswordType::class)
         ;
     }
 
