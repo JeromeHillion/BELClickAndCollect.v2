@@ -1,0 +1,55 @@
+body {
+    margin: 0;
+    font-size: 16px;
+}
+
+.nav {
+    background-color: #051622;
+    color: #1ba098;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h1 {
+    flex: 1;
+    margin: 0.5rem 0 0 0.5rem;
+}
+
+li {
+    list-style: none;
+}
+
+.btn {
+    padding: 0.5rem;
+    background-color: #1ba098;
+    color: #051622;
+}
+
+.nav a {
+    font-size: 1.1rem;
+    align-self: center;
+
+}
+
+.sub-nav a {
+    color: #051622;
+}
+
+.nav a, .sub-nav a {
+    text-decoration: none;
+
+}
+
+.sub-nav {
+    background-color: #1ba098;
+    color: #051622;
+
+}
+
+{
+
+
+}

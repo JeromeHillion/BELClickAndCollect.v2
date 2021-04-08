@@ -4,12 +4,18 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(
+ *     fields= {"email"},
+ *     message= "L'email que vous avez indiqué est déjà utilisé !"
+ * )
  */
-class User
+class User implements UserInterface
 {
     /**
      * @ORM\Id
@@ -26,10 +32,11 @@ class User
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Email()
      */
     private $email;
 
@@ -39,25 +46,20 @@ class User
     private $avatar;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $birthday;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $address;
-
-    /**
      * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $date_created;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min="8", minMessage="Votre mot de passe doit faire minimum 8 caratères")
+     *
      */
     private $password;
 
+    /**
+     * @Assert\EqualTo(propertyPath="password", message="Les 2 mots de passe ne sont pas identiques")
+     */
     public $confirm_password;
 
     public function getId(): ?int
@@ -77,17 +79,23 @@ class User
         return $this;
     }
 
-    public function getName(): ?string
+    /**
+     * @return mixed
+     */
+    public function getUsername()
     {
-        return $this->name;
+        return $this->username;
     }
 
-    public function setName(string $name): self
+    /**
+     * @param mixed $username
+     */
+    public function setUsername($username): void
     {
-        $this->name = $name;
-
-        return $this;
+        $this->username = $username;
     }
+
+
 
     public function getEmail(): ?string
     {
@@ -109,30 +117,6 @@ class User
     public function setAvatar(?string $avatar): self
     {
         $this->avatar = $avatar;
-
-        return $this;
-    }
-
-    public function getBirthday(): ?\DateTimeInterface
-    {
-        return $this->birthday;
-    }
-
-    public function setBirthday(?\DateTimeInterface $birthday): self
-    {
-        $this->birthday = $birthday;
-
-        return $this;
-    }
-
-    public function getAddress(): ?string
-    {
-        return $this->address;
-    }
-
-    public function setAddress(string $address): self
-    {
-        $this->address = $address;
 
         return $this;
     }
@@ -159,5 +143,20 @@ class User
         $this->password = $password;
 
         return $this;
+    }
+
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
+
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+    }
+
+    public function getRoles()
+    {
+        return ['ROLE USER'];
     }
 }
