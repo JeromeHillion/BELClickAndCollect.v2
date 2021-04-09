@@ -1,0 +1,37 @@
+h2, h4 {
+    margin: 0;
+    background-color: #fff;
+    border-left: solid 0.5rem #126B65;
+    text-align: start;
+}
+
+.search {
+    display: flex;
+    align-items: start;
+}
+
+.search input {
+    width: 100%;
+    height: 29px;
+    border-radius: 0.3rem;
+}
+
+.search img {
+
+    cursor: pointer;
+}
+
+.input-search {
+    align-self: center;
+    flex: 1;
+}
+
+.btn-search {
+    width: 48px;
+    height: 48px;
+    align-self: start;
+
+}
+.title{
+    padding: 1rem;
+}

@@ -1,7 +1,48 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Accueil BEL click & collect'{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('home') }}
+{% endblock %}
 
 {% block body %}
 
+    <div class="cover">
+        <div class="cover-span">
+            <h2>Bienvenue sur notre <span>BEL click & collect' !</span></h2>
+            <p>Durant cet pandémie l'accès à la culture s'est compliqué. En effet durant cette période difficile même si les bibliothèques restent ouvertes, l'anxiété et les restrictions nous poussent à limiter nos déplacements.
+
+                Pour permettre un accès en toute sécurité à la littérature, la BEL click & collect' a décidé de mettre en place un système qui va permettre aux bibliophiles d'avoir un accès, depuis leur domicile, aux ouvrages de la bibliothèque de leur secteur.</p>
+            <a href="{{ path('library') }}">En savoir plus sur ma bibliothèque</a>
+        </div>
+    </div>
+<div class="article">
+    <article>
+        <div class="title">
+        <h4>Bienvenue sur notre</h4>
+        <h2>Accueil</h2>
+        </div>
+        <h3>la bibliothèque est ouverte du mardi au samedi</h3>
+        <p>La bibliothèque est ouverte aux horaires habituels et ferme au plus tard à 18h30 pour tenir compte du couvre-feu à 19h.
+            La bibliothèque est ouverte pour permettre au public d’emprunter, de rendre des documents et de s’inscrire ou se réinscrire.
+            La quarantaine des documents en retour est maintenue. Les places de travail et les postes informatiques/Internet sont accessibles.
+            Depuis le 15 février, la pratique d'activités culturelles est possible en bibliothèque. Cette faculté doit néanmoins s’entendre dans le respect des six personnes par groupe.
+            Le port du masque est rendu obligatoire lors de la pratique d’activités artistiques</p>
+    </article>
+    <article>
+        <div class="title">
+        <h4>BM de</h4>
+        <h2>Dijon </h2>
+        </div>
+        <h3>Atelier d'écriture de Haïkus </h3>
+        <p>En cette période de confinement, que diriez-vous d’écrire des haïkus ?
+            Si vous ne savez pas ce que sont les haïkus, allez voir la vidéo tutoriel : tout y est expliqué !
+            Et en plus, vous participerez à Clameur(s) en nous envoyant vos créations à l’adresse mail en lien dans la description de la vidéo youtube !
+            Faites parler votre esprit créatif, l’équipe Clameur(s) attend avec impatience vos petits écrits !</p>
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/FFKuIW0pgpE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <a href="https://bm.dijon.fr/">BM de Dijon</a>
+    </article>
+</div>
 {% endblock %}

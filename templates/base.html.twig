@@ -6,10 +6,30 @@
     {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
     {% block stylesheets %}
+        {############################################Google-font#########################################}
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Roboto:wght@700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+        {############################################Favicon#########################################}
+        <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('images/apple-icon-57x57.png') }}">
+        <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('images/apple-icon-60x60.png') }}">
+        <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('images/apple-icon-72x72.png') }}">
+        <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('images/apple-icon-76x76.png') }}">
+        <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('images/apple-icon-114x114.png') }}">
+        <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('images/apple-icon-120x120.png') }}">
+        <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('images/apple-icon-144x144.png') }}">
+        <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('images/apple-icon-152x152.png') }}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/apple-icon-180x180.png') }}">
+        <link rel="icon" type="image/png" sizes="192x192"  href="{{ asset('images/android-icon-192x192.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('images/favicon-96x96.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon-16x16.png') }}">
+        <link rel="manifest" href="/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+        {############################################WebPack-encore#########################################}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
 
@@ -21,25 +41,47 @@
 <header>
     <nav>
         <div class="nav">
-            <h1><img src="{{ asset('images/icons8-library-64.png') }}" alt="icons8-library-64.png">BEL click & collect'</h1>
+            <img src="{{ asset('images/icones/icons8-library-64.png') }}" alt="icons8-library-64.png">
+            <h1>BEL click & collect'</h1>
 
            {#Si l'utilisateur est connecté on affiche le bouton de déconnexion#}
             {% if app.user %}
-            <a class="btn" href="{{ path('security_logout') }}">déconnexion</a>
+            <a class="btn" href="{{ path('security_logout') }}">Déconnexion</a>
             {% endif %}
         </div>
         <div class="sub-nav">
             <ul>
                 <li><a href="{{ path('index') }}">Accueil</a></li>
                 <li><a href="">Livres</a></li>
-                <li><a href="">Rechercher</a></li>
+                <li><a href="{{ path('search') }}">Rechercher</a></li>
                 <li><a href="">Charte d'utilisation</a></li>
-                <li><a href="">ma bibliothèque</a></li>
+                <li><a href="{{ path('library') }}">ma bibliothèque</a></li>
             </ul>
 
         </div>
     </nav>
+
 </header>
+<div class="container">
 {% block body %}{% endblock %}
+</div>
+
+<footer>
+    <nav>
+        <div class="nav">
+            <img src="{{ asset('images/icones/icons8-library-64.png') }}" alt="icons8-library-64.png">
+            <h1>BEL click & collect'</h1>
+        <div class="sub-nav">
+            <ul>
+                <li><a href=""><img src="{{ asset('images/icones/icons8-facebook-26.png') }}" alt=""></a></li>
+                <li><a href=""><img src="{{ asset('images/icones/icons8-twitter-26.png') }}" alt=""></a></li>
+                <li><a href=""><img src="{{ asset('images/icones/icons8-instagram-26.png') }}" alt=""></a></li>
+                <li><a href=""><img src="{{ asset('images/icones/icons8-linkedin-26.png') }}" alt=""></a></li>
+                <li><a href=""><img src="{{ asset('images/icones/icons8-pinterest-26.png') }}" alt=""></a></li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+</footer>
 </body>
 </html>

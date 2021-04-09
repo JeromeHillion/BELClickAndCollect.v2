@@ -19,16 +19,56 @@ class MainController extends abstractController
      * @Route("/", name="index")
      * @return Response
      */
-    public function index(){
+    public function index()
+    {
 
         //On vérifie que notre utilisateur est bien connecté sinon on le redirige sur la page de connexion
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-        $user= $this->getUser();
+        $user = $this->getUser();
 
-        if (!$user){
+        if (!$user) {
             return $this->redirectToRoute('security_login');
         }
 
-return $this->render('index.html.twig');
+        return $this->render('index.html.twig');
+    }
+    /**
+     * @Route("/ma bibliothèque", name="library")
+     * @return Response
+     */
+    public function library()
+    {
+
+        //On vérifie que notre utilisateur est bien connecté sinon on le redirige sur la page de connexion
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $user = $this->getUser();
+
+        if (!$user) {
+            return $this->redirectToRoute('security_login');
+        }
+
+
+
+        return $this->render('library.html.twig');
+    }
+
+    /**
+     * @Route("/rechercher", name="search")
+     * @return Response
+     */
+    public function search()
+    {
+
+        //On vérifie que notre utilisateur est bien connecté sinon on le redirige sur la page de connexion
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $user = $this->getUser();
+
+        if (!$user) {
+            return $this->redirectToRoute('security_login');
+        }
+
+
+
+        return $this->render('search.html.twig');
     }
 }

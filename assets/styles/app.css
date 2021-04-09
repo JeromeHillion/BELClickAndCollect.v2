@@ -1,41 +1,86 @@
 body {
     margin: 0;
     font-size: 16px;
+    background-color: #051622;
+    font-family: 'Roboto', sans-serif;
 }
 
 .nav {
     background-color: #051622;
-    color: #1ba098;
     width: 100%;
     max-width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+
+}
+
+article {
+    padding: 2rem;
+    background-color: #fff;
+
+
 }
 
 h1 {
     flex: 1;
     margin: 0.5rem 0 0 0.5rem;
+    color: #fff;
+    font-family: 'Fredoka One', cursive;
+}
+
+h3 {
+    color: #D1AF8A;
+    font-family: 'Fredoka One', cursive;
+}
+
+.nav img {
+    margin: 0.5rem 0 0 0.5rem;
+
+}
+
+ul {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    max-width: 50%;
+    margin: 0 auto;
 }
 
 li {
     list-style: none;
+    padding: 1rem;
 }
 
 .btn {
     padding: 0.5rem;
-    background-color: #1ba098;
-    color: #051622;
+    border: solid 1px #126B65;
+    color: #F7CFA3;
+    margin-right: 1rem;
+    border-radius: 0.3rem;
+}
+
+.btn:hover {
+    background-color: #126B65;
+    color: #F7CFA3;
+    margin-right: 1rem;
+    border-radius: 0.3rem;
 }
 
 .nav a {
-    font-size: 1.1rem;
     align-self: center;
 
 }
 
 .sub-nav a {
-    color: #051622;
+    color: #F7CFA3;
+    font-size: 1rem;
+}
+
+.sub-nav a:hover {
+    color: #6B5947;
+    font-size: 1rem;
 }
 
 .nav a, .sub-nav a {
@@ -44,12 +89,24 @@ li {
 }
 
 .sub-nav {
-    background-color: #1ba098;
-    color: #051622;
-
-}
-
-{
+    background-color: #126B65;
+    color: #F7CFA3;
+    display: flex;
+    justify-content: space-around;
 
 
 }
+
+.container {
+    width: 70%;
+    margin: 0 auto;
+    background-color: #051622;
+    max-width: 100%;
+
+
+}
+
+/*footer {
+    position: absolute;
+    bottom: 0;
+}*/
