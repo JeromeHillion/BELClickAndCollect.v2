@@ -62,6 +62,12 @@ class User implements UserInterface
      */
     public $confirm_password;
 
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -155,8 +161,15 @@ class User implements UserInterface
         // TODO: Implement getSalt() method.
     }
 
-    public function getRoles()
+    /**
+     * @return array
+     */
+    public function getRoles(): array
     {
-        return ['ROLE USER'];
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
     }
 }

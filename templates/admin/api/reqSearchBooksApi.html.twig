@@ -1,0 +1,49 @@
+{% extends './baseAdmin.html.twig' %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('admin_searchBooksApi') }}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <a href="{{ path('admin_dashboard') }}">dashboard > </a><a href="{{ path('admin_searchBooksApi') }}">rechercher </a>
+    <h1>Rechercher un livre via l'API google Books</h1>
+
+    <div class="searchForm">
+
+        <article>
+            <div class="title">
+                <h4>Votre</h4>
+                <h2>Recherche</h2>
+            </div>
+            <div class="search">
+                <div class="input-search">
+                    <input id="input-value" type="text" placeholder="rechercher...">
+                </div>
+                <div class="btn-search">
+                    <img id="btn-search" src="{{ asset('images/icones/icons8-google-web-search-48.png') }}" width="48" height="48" alt="">
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <div id="resultSearch"></div>
+    <table id="tableData"  class="d-none table table-striped">
+        <thead class="bg-white">
+        <tr>
+            <th>titre</th>
+            <th>auteur</th>
+            <th>Catégory</th>
+            <th>Date de parution</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+    </table>
+    </div>
+{% endblock  %}
+
+{% block javascripts %}
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    {{ encore_entry_script_tags('admin_searchBooksApi') }}
+{% endblock %}

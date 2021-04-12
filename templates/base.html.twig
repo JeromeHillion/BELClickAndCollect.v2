@@ -47,6 +47,9 @@
            {#Si l'utilisateur est connecté on affiche le bouton de déconnexion#}
             {% if app.user %}
             <a class="btn" href="{{ path('security_logout') }}">Déconnexion</a>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('admin_dashboard') }}">BEL dashboard</a>
+                {% endif %}
             {% endif %}
         </div>
         <div class="sub-nav">
@@ -69,8 +72,10 @@
 <footer>
     <nav>
         <div class="nav">
+            <div class="prime-nav">
             <img src="{{ asset('images/icones/icons8-library-64.png') }}" alt="icons8-library-64.png">
             <h1>BEL click & collect'</h1>
+            </div>
         <div class="sub-nav">
             <ul>
                 <li><a href=""><img src="{{ asset('images/icones/icons8-facebook-26.png') }}" alt=""></a></li>

@@ -1,19 +1,31 @@
-{%  extends 'base.html.twig' %}
+{% extends 'base.html.twig' %}
+{% block title %}Connexion{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('login') }}
+{% endblock %}
 {% block body %}
-    <h1>Connexion</h1>
+    <div class="form-section">
+        <div class="form">
+            <h1>Connexion</h1>
+            <form action="{{ path('security_login') }}" method="post">
+                <img src="{{ asset('images/icones/icons8-user-60.png') }}" width="60" alt="icons8-library-64.png">
+                <div class="mail">
+                    <input placeholder="votre adresse mail" type="text" required name="_username">
+                </div>
 
-    <form action="{{ path('security_login') }}" method="post">
-        <div class="">
-            <input placeholder="votre adresse mail" type="text" required name="_username">
-        </div>
+                <div class="password">
+                    <input placeholder="votre mot de passe" type="password" required name="_password">
+                </div>
 
-        <div class="">
-            <input placeholder="votre mot de passe" type="password" required name="_password">
-        </div>
+                <div class="btn-submit">
+                    <input type="submit" value="Connexion">
+                </div>
 
-        <div class="">
-            <button  type="submit" >Connexion</button>
+                <h4>Pas encore inscrit ?</h4>
+                <a href="{{ path('security_registration') }}">Inscription</a>
+            </form>
         </div>
-    </form>
+    </div>
 {% endblock %}

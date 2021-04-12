@@ -30,7 +30,7 @@ class MainController extends abstractController
             return $this->redirectToRoute('security_login');
         }
 
-        return $this->render('index.html.twig');
+        return $this->render('library/index.html.twig');
     }
     /**
      * @Route("/ma bibliothèque", name="library")
@@ -49,7 +49,7 @@ class MainController extends abstractController
 
 
 
-        return $this->render('library.html.twig');
+        return $this->render('library/library.html.twig');
     }
 
     /**
@@ -69,6 +69,6 @@ class MainController extends abstractController
 
 
 
-        return $this->render('search.html.twig');
+        return $this->render('library/search.html.twig');
     }
 }

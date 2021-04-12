@@ -1,0 +1,59 @@
+.form-section{
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50rem;
+}
+
+form {
+
+    padding: 2rem;
+
+}
+
+.form {
+    background-color: #FFFFFF;
+    border: solid 0.3rem #126B65;
+    text-align: center;
+    padding:0  0.5rem 0 0;
+
+}
+.form h1{
+    background-color: #126B65;
+    color: #F7CFA3;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    flex: 0;
+    padding: 0.3rem;
+
+}
+.form .mail, .form .password {
+    padding: 1rem;
+}
+.form .mail input[type='text'], .form .password input[type='password'] {
+    width: 20rem;
+    height: 3rem;
+
+}
+.form .btn-submit {
+    align-self: center;
+    font-size: 2rem;
+
+}
+.form .btn-submit input[type='submit']{
+    padding: 0.5rem;
+    background-color: #126B65;
+    color: #FFFFFF;
+    cursor: pointer;
+    border: none;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+
+}
+.form img {
+    align-self: center;
+
+}

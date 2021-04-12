@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}BEL dashboard{% endblock %}</title>
+    {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('admin_app') }}
+    {% endblock %}
+</head>
+<div class="dashboard">
+    <nav>
+        <img src="{{ asset('images/icones/icons8-dashboard-layout-64.png') }}" alt="icons8-dashboard-layout-64.png"> <h1>BEL dashboard</h1>
+    </nav>
+<section>
+    <div class="verticaly-menu">
+        <ul>
+        <h3>
+            <img src="{{ asset('images/icones/icons8-books-32.png') }}" alt="icons8-books-32.png"> Gestion des livres
+        </h3>
+        <li>
+            <a href="{{ path('admin_searchBooksApi') }}">Ajouter un livre</a>
+        </li>
+        <li>
+            <a href="">Liste des livres</a>
+        </li>
+        </ul>
+        <ul>
+        <h3>
+            <img src="{{ asset('images/icones/icons8-user-settings-32.png') }}" alt="icons8-user-settings-32.png">   Gestion des Utilisateurs
+        </h3>
+        <li>
+            <a href="">Liste des utilisateurs</a>
+        </li>
+        </ul>
+        <ul>
+        <h3>
+            <img src="{{ asset('images/icones/icons8-window-settings-32.png') }}" alt="icons8-window-settings-32.png">   Gestion du site
+        </h3>
+        <li>
+            <a href="{{ path('index') }}">Accueil</a>
+        </li>
+        <li>
+            <a href="{{ path('library') }}">Livres</a>
+        </li>
+        <li>
+            <a href="{{ path('search') }}">Recherche</a>
+        </li>
+        </ul>
+    </div>
+
+<div class="container">
+
+    {% block body %}
+
+    {% endblock %}
+</div>
+</div>
+    </section>
+    {% block javascripts %}
+        {{ encore_entry_script_tags('admin_app') }}
+    {% endblock %}
+</html>

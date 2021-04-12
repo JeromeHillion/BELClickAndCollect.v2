@@ -30,14 +30,16 @@ class SecurityController extends AbstractController
 
         $entityManager = $this->getDoctrine()->getManager();
 
-        //avant d'enregistrer on prépare le hash du mot de passe
-        $hash = $encoder->encodePassword($user, $user->getPassword());
 
-        //On récupère le mot de passe pour le hacher avant insertion dans la base de donnée
-        $user->setPassword($hash);
 
         //Si le formulaire est soumis et valide on enregistre dans notre base données
+
         if ($form->isSubmitted() && $form->isValid()) {
+            //avant d'enregistrer on prépare le hash du mot de passe
+             $hash = $encoder->encodePassword($user, $user->getPassword());
+
+            //On récupère le mot de passe pour le hacher avant insertion dans la base de donnée
+            $user->setPassword($hash);
             $entityManager->persist($user);
             $entityManager->flush();
 
@@ -64,6 +66,7 @@ class SecurityController extends AbstractController
     public function logout(){
 
     }
+
 
 
 }
