@@ -4,6 +4,7 @@
 namespace App\Api;
 
 
+use App\Entity\Books;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class callApi
@@ -29,12 +30,14 @@ class callApi
         return $response->getContent();
     }
 
-    public function getBook(string $id)
+    public function getBookById(string $id)
     {
         $response = $this->client->request(
             'GET',
-            'https://www.googleapis.com/books/v1/volumes/'. $id . '?key=AIzaSyD8AeRy2SQTAQcjPAcscSQUx6H2Jlzmo6w'
+            'https://www.googleapis.com/books/v1/volumes/' . $id . '?key=AIzaSyD8AeRy2SQTAQcjPAcscSQUx6H2Jlzmo6w'
         );
         return $response->getContent();
     }
+
+
 }

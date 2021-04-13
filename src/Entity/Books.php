@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Api\callApi;
 use App\Repository\BooksRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -25,7 +26,7 @@ class Books
     /**
      * @ORM\Column(type="array")
      */
-    private $author;
+    public $author;
 
     /**
      * @ORM\Column(type="array")
@@ -42,15 +43,23 @@ class Books
      */
     private $summary;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $cover;
 
     /**
      * @ORM\Column(type="integer")
      */
     private $quantity;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $googleBookId;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $cover;
+
+
 
     public function getId(): ?int
     {
@@ -83,7 +92,7 @@ class Books
      */
     public function setAuthor(array $author): array
     {
-       return $this->author = $author;
+        return $this->author = $author;
     }
 
     /**
@@ -101,10 +110,6 @@ class Books
     {
         return $this->category = $category;
     }
-
-
-
-
 
     public function getPublication(): ?\DateTimeInterface
     {
@@ -130,17 +135,8 @@ class Books
         return $this;
     }
 
-    public function getCover(): ?string
-    {
-        return $this->cover;
-    }
 
-    public function setCover(string $cover): self
-    {
-        $this->cover = $cover;
 
-        return $this;
-    }
 
     public function getQuantity(): ?int
     {
@@ -153,4 +149,55 @@ class Books
 
         return $this;
     }
+
+    public function getGoogleBookId(): ?string
+    {
+        return $this->googleBookId;
+    }
+
+    public function setGoogleBookId(string $googleBookId): self
+    {
+        $this->googleBookId = $googleBookId;
+
+        return $this;
+    }
+
+    public function getBook(callApi $callApi, string $name)
+    {
+        $books = $callApi->getBookData($name);
+        $listBook = json_decode($books);
+        $arrayBook = [];
+        foreach ($listBook->items as $item) {
+            $newBook = new Books();
+
+            $newBook->setName($item->volumeInfo->title);
+            $newBook->setGoogleBookId($item->id);
+
+            if (isset($item->volumeInfo->authors) && isset($item->volumeInfo->categories)) {
+                $newBook->setAuthor($item->volumeInfo->authors);
+                $newBook->setCategory($item->volumeInfo->categories);
+
+                $newBook->setPublication(new \DateTime($item->volumeInfo->publishedDate));
+                $item = $newBook;
+
+                array_push($arrayBook, $item);
+            }
+
+        }
+        return $arrayBook;
+    }
+
+    public function getCover(): ?string
+    {
+        return $this->cover;
+    }
+
+    public function setCover(string $cover): self
+    {
+        $this->cover = $cover;
+
+        return $this;
+    }
+
+
 }

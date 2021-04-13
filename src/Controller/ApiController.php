@@ -22,38 +22,35 @@ class ApiController extends abstractController
 
     }
 
+
     /**
      * @Route("/admin/api/reqSearchBooksApi/{name}")
      */
     public function reqSearchBooksApi(callApi $callApi, string $name)
     {
+
         $books = $callApi->getBookData($name);
         $listBook = json_decode($books);
         $arrayBook = [];
-
-        $newBook = new Books();
-        /*dd($listBook->items);*/
         foreach ($listBook->items as $item) {
+            $newBook = new Books();
 
             $newBook->setName($item->volumeInfo->title);
+            $newBook->setGoogleBookId($item->id);
 
-
-            if (isset($item->volumeInfo->authors) && isset($item->volumeInfo->categories)) {
+            if (isset($item->volumeInfo->authors) && isset($item->volumeInfo->categories) && isset($item->volumeInfo->publishedDate)) {
                 $newBook->setAuthor($item->volumeInfo->authors);
                 $newBook->setCategory($item->volumeInfo->categories);
-            } else {
-                $newBook->setCategory([]);
-                $newBook->setAuthor([]);
+                $newBook->setCover($item->volumeInfo->imageLinks->thumbnail);
+                $newBook->setSummary($item->volumeInfo->description);
+
+                $newBook->setPublication(new \DateTime($item->volumeInfo->publishedDate));
+                $item = $newBook;
+
+                array_push($arrayBook, $item);
             }
-
-
-             $newBook->setPublication(new \DateTime($item->volumeInfo->publishedDate));
-$item = $newBook;
-            array_push($arrayBook, $item);
         }
-        /*dd($arrayBook);*/
-
-
+/*dd($arrayBook);*/
         return $this->json([
             'code' => 200,
             'message' => 'Livres trouvées !',
