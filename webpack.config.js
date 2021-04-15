@@ -28,6 +28,7 @@ Encore
     /*Admin*/
     .addEntry('admin_app', './assets/admin_app.js')
     .addEntry('admin_searchBooksApi', './assets/admin/api/admin_searchBooksApi.js')
+    .addEntry('admin_listBooks', './assets/admin/admin_listBook.js')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')

@@ -4,28 +4,31 @@
     {{ parent() }}
 {% endblock %}
 {% block body %}
-    <a href="{{ path('admin_dashboard') }}">dashboard > </a><a href="{{ path('admin_searchBooksApi') }}">rechercher </a>
-    <h1>Rechercher un livre via l'API google Books</h1>
 
-    <div class="searchForm">
+    <div class="searchApi">
 
-        <article>
-            <div class="title">
-                <h4>Votre</h4>
-                <h2>Recherche</h2>
-            </div>
-            <div class="search">
-                <div class="input-search">
-                    <input id="input-value" type="text" placeholder="rechercher...">
+        <h1>Rechercher un livre via l'API google Books</h1>
+
+        <div class="searchForm">
+
+            <article>
+                <div class="title">
+                    <h4>Votre</h4>
+                    <h2>Recherche</h2>
                 </div>
-                <div class="btn-search">
-                    <img id="btn-search" src="{{ asset('images/icones/icons8-google-web-search-48.png') }}" width="48" height="48" alt="">
+                <div class="search">
+                    <div class="input-search">
+                        <input id="input-value" type="text" placeholder="rechercher...">
+                    </div>
+                    <div class="btn-search">
+                        <img id="btn-search" src="{{ asset('images/icones/icons8-google-web-search-48.png') }}"
+                             width="48" height="48" alt="">
+                    </div>
                 </div>
-            </div>
-        </article>
-    </div>
-    <svg version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-         viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
+            </article>
+        </div>
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
        <circle fill="#fff" stroke="none" cx="30" cy="50" r="6">
            <animate
                    attributeName="opacity"
@@ -35,46 +38,51 @@
                    begin="0.1"
            />
        </circle>
-        <circle fill="#fff" stroke="none" cx="50" cy="50" r="6">
-            <animate
-                    attributeName="opacity"
-                    dur="1s"
-                    values="0;1;0"
-                    repeatCount="indefinite"
-                    begin="0.2"
-            />
-        </circle>
-        <circle fill="#fff" stroke="none" cx="70" cy="50" r="6">
-            <animate
-                    attributeName="opacity"
-                    dur="1s"
-                    values="0;1;0"
-                    repeatCount="indefinite"
-                    begin="0.3"
-            />
-        </circle>
+            <circle fill="#fff" stroke="none" cx="50" cy="50" r="6">
+                <animate
+                        attributeName="opacity"
+                        dur="1s"
+                        values="0;1;0"
+                        repeatCount="indefinite"
+                        begin="0.2"
+                />
+            </circle>
+            <circle fill="#fff" stroke="none" cx="70" cy="50" r="6">
+                <animate
+                        attributeName="opacity"
+                        dur="1s"
+                        values="0;1;0"
+                        repeatCount="indefinite"
+                        begin="0.3"
+                />
+            </circle>
     </svg>
-    <div id="resultSearch"></div>
-    <table id="tableData"  class="table">
-        <thead class="bg-white">
-        <tr>
-            <th>titre</th>
-            <th>auteur</th>
-            <th>Catégory</th>
-            <th>Date de parution</th>
-            <th>Action</th>
-        </tr>
-        </thead>
-        <tbody id="tbody">
+        <span id="error">Le livre a déjà été enregistré dans la base de données !</span>
+        <span id="success">Le livre a bien été ajouté à la  base de données !</span>
+        <span id="notFound">La recherche n'a rien trouvé !</span>
+        <div id="resultSearch">
+            <div class="result">
+        <table id="tableData" class="table">
+            <thead class="bg-white">
+            <tr>
+                <th>titre</th>
+                <th>auteur</th>
+                <th>Catégory</th>
+                <th>Date de parution</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody id="tbody">
 
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+            </div>
+        </div>
     </div>
 
-
-{% endblock  %}
+{% endblock %}
 
 {% block javascripts %}
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     {{ encore_entry_script_tags('admin_searchBooksApi') }}
 {% endblock %}

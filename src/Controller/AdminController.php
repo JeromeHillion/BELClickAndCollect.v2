@@ -5,8 +5,10 @@ namespace App\Controller;
 
 use App\Api\callApi;
 use App\Entity\Books;
+use App\Repository\BooksRepository;
 use Doctrine\ORM\EntityManager;
 use Psr\Container\ContainerInterface;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,18 +27,24 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin/addBook/{id}", name="add_book")
      */
-    public function addBook(callApi $callApi, string $id)
+    public function addBook(callApi $callApi, string $id, BooksRepository $booksRepository)
     {
         $bookDatas = $callApi->getBookById($id);
-        /*dd($book);*/
         $bookData = json_decode($bookDatas);
         $newBook = new Books();
-        foreach ($bookData->volumeInfo as $data) {
 
-            $newBook->setName($bookData->volumeInfo->title);
+if ($booksRepository->findOneBy(['googleBookId'=> $id])){
+
+    /*$response = new Response();
+    return $response->setStatusCode(409, "Le livre existe déjà en base de données");*/
+
+
+
+}
+     $newBook->setName($bookData->volumeInfo->title);
             $newBook->setGoogleBookId($bookData->id);
 
-            if (isset($bookData->volumeInfo->authors) && isset($bookData->volumeInfo->categories) && isset($bookData->volumeInfo->publishedDate)) {
+            if (isset($bookData->volumeInfo->authors) && isset($bookData->volumeInfo->categories) && isset($bookData->volumeInfo->imageLinks->thumbnail) && isset($bookData->volumeInfo->description) && isset($bookData->volumeInfo->publishedDate) ) {
                 $newBook->setAuthor($bookData->volumeInfo->authors);
                 $newBook->setCategory($bookData->volumeInfo->categories);
                 $newBook->setCover($bookData->volumeInfo->imageLinks->thumbnail);
@@ -51,19 +59,43 @@ class AdminController extends AbstractController
                 $entityManager->flush();
             }
 
-        }
-        //On redirige vers la page des livres
-        return $this->redirectToRoute("list_books");
+
+        return $this->json([
+            'code' => 200,
+            'message' => 'Le livre a bien été ajouté !',
+            'id' => $id
+        ]);
     }
 
     /**
      * @Route("/admin/livres", name="list_books")
      */
-    public function listBook()
+    public function listBook(BooksRepository $repository)
     {
+        $books = $repository->findAll();
 
-        return $this->render('/admin/listbook.html.twig');
+        return $this->render('/admin/listbook.html.twig',[
+            "books" => $books
+        ]);
 
+    }
+
+    /**
+     * @Route("/admin/deleteBook/{id}", name="delete_book")
+     */
+    public function deleteBook(BooksRepository $booksRepository, int $id){
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $book = $booksRepository->find($id);
+
+        $entityManager->remove($book);
+        $entityManager->flush();
+
+        return $this->json([
+            'code' => 200,
+            'message' => 'Le livre a bien été supprimé !',
+            'id' => $id
+        ]);
     }
 
 }

@@ -1,3 +1,7 @@
+.searchApi{
+    padding: 2rem;
+}
+
 h2, h4 {
     margin: 0;
     background-color: #fff;
@@ -35,8 +39,18 @@ h2, h4 {
 .title{
     padding: 1rem;
 }
+#resultSearch{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .table{
     display: none;
+
+}
+td, th{
+    border: solid 1px #ccc;
+    padding: 1rem;
 }
 
 /*loader*/
@@ -44,7 +58,21 @@ h2, h4 {
     margin: 0;
     padding: 0;
 }
+#error, #success, #notFound{
+    display: none;
+}
+#error, #notFound{
+    background-color: red;
+    color: #FFFFFF;
+    padding: 0.5rem;
 
+}
+#success{
+    background-color: green;
+    color: #FFFFFF;
+    padding: 0.5rem;
+
+}
 
 
 svg {

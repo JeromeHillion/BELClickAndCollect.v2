@@ -1,3 +1,41 @@
 {% extends 'baseAdmin.html.twig' %}
 {% block title %}Bibliothèque des livres{% endblock %}
-{% block body %}{% endblock %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('admin_listBooks') }}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+
+    <h2>Listes des livres en base de données</h2>
+
+    <table>
+        <thead>
+        <tr>
+            <th>image de couverture</th>
+            <th>titre</th>
+            <th>auteur(e)</th>
+            <th>date de publication</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for book in books %}
+        <tr id="{{ book.id }}">
+        <td><img src="{{ book.cover }}" alt="cover"></td>
+            <td>{{ book.name }}</td>
+            <td>
+            {% for book_author in book.author %}
+            {{ book_author }}
+                {% endfor %}
+            </td>
+            <td>{{ book.publication| date("m/d/Y") }}</td>
+            <td><a id="btn_delete" href="{{ path('delete_book', {'id':book.id}) }}">supprimer</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+{% block javascripts %}
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    {{ encore_entry_script_tags('admin_listBooks') }}
+{% endblock %}

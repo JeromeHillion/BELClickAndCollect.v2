@@ -32,24 +32,28 @@ class ApiController extends abstractController
         $books = $callApi->getBookData($name);
         $listBook = json_decode($books);
         $arrayBook = [];
+
         foreach ($listBook->items as $item) {
             $newBook = new Books();
 
             $newBook->setName($item->volumeInfo->title);
             $newBook->setGoogleBookId($item->id);
 
-            if (isset($item->volumeInfo->authors) && isset($item->volumeInfo->categories) && isset($item->volumeInfo->publishedDate)) {
+            if (isset($item->volumeInfo->authors) && isset($item->volumeInfo->categories) && isset($item->volumeInfo->imageLinks->thumbnail) && isset($item->volumeInfo->description) && isset($item->volumeInfo->publishedDate) ) {
                 $newBook->setAuthor($item->volumeInfo->authors);
                 $newBook->setCategory($item->volumeInfo->categories);
                 $newBook->setCover($item->volumeInfo->imageLinks->thumbnail);
                 $newBook->setSummary($item->volumeInfo->description);
 
                 $newBook->setPublication(new \DateTime($item->volumeInfo->publishedDate));
-                $item = $newBook;
 
-                array_push($arrayBook, $item);
+
+                array_push($arrayBook, $newBook);
             }
+
+            /*dd($arrayBook);*/
         }
+
 /*dd($arrayBook);*/
         return $this->json([
             'code' => 200,
