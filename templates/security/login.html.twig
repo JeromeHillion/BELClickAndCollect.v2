@@ -6,25 +6,37 @@
     {{ encore_entry_link_tags('login') }}
 {% endblock %}
 {% block body %}
+    <div class="bandeau-section">
+    <div class="title">
+        <h2>Connexion</h2>
+    </div>
+    <div class="breadcrumb">
+        <span> accueil / connexion</span>
+    </div>
+    </div>
     <div class="form-section">
         <div class="form">
-            <h1>Connexion</h1>
+            <div class="form-title">
+                <h2>Connexion</h2>
+                <p>Déjà client ?</p>
+                <p>Connectez-vous pour gérer votre compte </p>
+            </div>
             <form action="{{ path('security_login') }}" method="post">
-                <img src="{{ asset('images/icones/icons8-user-60.png') }}" width="60" alt="icons8-library-64.png">
                 <div class="mail">
-                    <input placeholder="votre adresse mail" type="text" required name="_username">
+                    <input placeholder="Email" type="text" required name="_username">
                 </div>
 
                 <div class="password">
-                    <input placeholder="votre mot de passe" type="password" required name="_password">
+                    <input placeholder="Mot de passe" type="password" required name="_password">
                 </div>
 
                 <div class="btn-submit">
                     <input type="submit" value="Connexion">
                 </div>
-
-                <h4>Pas encore inscrit ?</h4>
-                <a href="{{ path('security_registration') }}">Inscription</a>
+                <div class="not-register">
+                    <span>Pas encore enregistrer ?</span>
+                    <p><a href="{{ path('security_registration') }}">Inscrivez-vous maintenant !</a>  Enregistrez-vous en moins d'une minute et accédez dès à présent à notre bibliothèque !</p>
+                </div>
             </form>
         </div>
     </div>

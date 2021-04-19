@@ -1,4 +1,22 @@
-{% extends '../base.html.twig' %}
+{% extends 'base.html.twig' %}
+{% block title %}Ma bibliothèque{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('library') }}
+{% endblock %}
 {% block body %}
+    <div class="bandeau-section">
+        <div class="title">
+            <h2>ma bibliothèque</h2>
+        </div>
+        <div class="breadcrumb">
+            <span> accueil / ma bibliothèque</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>nous sommes là pour vous aidez</h2>
+        <p>Vous avez besoin de renseignement sur notre bibliothèque digital, sur son fonctionnement ? Vous éprouvez des difficultés à comprendre l'utilisation de la bibliothèque ? Prenez contact avec nous, nous vous accompagnons avec grand plaisir. </p>
+    </div>
 {% endblock%}

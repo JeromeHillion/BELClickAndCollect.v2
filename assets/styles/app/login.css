@@ -1,59 +1,152 @@
-.form-section{
+.form-section {
     width: 100%;
     max-width: 100%;
     display: flex;
     justify-content: center;
+    padding: 2rem 0 2rem 0;
+}
+
+.bandeau-section {
+    max-width: 100%;
+    background-image: linear-gradient(rgba(27, 160, 152, 0.6), rgba(18, 107, 101, 0.6)), url("/public/images/pexels-brett-sayles-1493759.jpg");
+    background-size: cover;
+    padding: 1rem;
+    z-index: 1;
+    display: flex;
     align-items: center;
-    height: 50rem;
+    justify-content: space-evenly;
+
+
+}
+
+.title {
+    text-align: center;
+    color: #FFFFFF;
+
+}
+.title h2, .breadcrumb  span  {
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+
+.breadcrumb {
+    text-align: center;
+    color: #FFFFFF;
+    font-weight: lighter;
+
 }
 
 form {
 
     padding: 2rem;
 
+
 }
 
 .form {
     background-color: #FFFFFF;
-    border: solid 0.3rem #126B65;
-    text-align: center;
-    padding:0  0.5rem 0 0;
+
+
 
 }
-.form h1{
-    background-color: #126B65;
-    color: #F7CFA3;
-    width: 100%;
+
+.form-title {
+    max-width: 100%;
+
+
+}
+
+.form-title h2 {
+    color: #126B65;
     max-width: 100%;
     margin: 0;
-    flex: 0;
-    padding: 0.3rem;
+    padding: 1rem 1.5rem 0 2.9rem;
+
+
 
 }
+
+.form-title p{
+    color: #051622;
+    max-width: 100%;
+    margin: 0;
+    padding: 1rem 1.5rem 1rem 2.9rem;
+
+
+
+}.form-title p:nth-child(2) {
+     font-weight: lighter;
+     padding-top: 0;
+
+ }
+
+.form-title p:nth-child(3) {
+    border-bottom: solid 1px #ccc;
+    padding: 0;
+     margin: 1rem 1.5rem 1rem 2.9rem;
+    color: #555;
+    font-weight: lighter;
+
+}
+
+
 .form .mail, .form .password {
     padding: 1rem;
-}
-.form .mail input[type='text'], .form .password input[type='password'] {
-    width: 20rem;
-    height: 3rem;
 
 }
+
+.form .mail input[type='text'], .form .password input[type='password'], .form .mail input[type='email'], .form .mail input[type='file'] {
+    padding: 1rem .3rem 1rem;
+    border: solid 1px #ccc;
+    width: 100%;
+    max-width: 100%;
+
+}
+
 .form .btn-submit {
-    align-self: center;
     font-size: 2rem;
+    text-align: center;
 
 }
-.form .btn-submit input[type='submit']{
+
+.form .btn-submit input[type='submit'] {
     padding: 0.5rem;
-    background-color: #126B65;
-    color: #FFFFFF;
+    border: solid 1px #051622;
+    color: #051622;
     cursor: pointer;
-    border: none;
     border-radius: 0.3rem;
     font-size: 1rem;
+    background-color: #fff;
+    box-shadow: -2.5px 2px 2px #051622;
 
 }
+
+.form .btn-submit input[type='submit']:hover {
+
+    background-color: #051622;
+    color: #fff;
+    cursor: pointer;
+
+}
+
 .form img {
     align-self: center;
 
+}
+
+.not-register {
+    text-align: center;
+    padding: 1rem;
+}
+
+.not-register a {
+    color: #126B65;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.not-register p {
+    font-size: .85rem;
+    font-weight: lighter;
+    text-decoration: none;
 }

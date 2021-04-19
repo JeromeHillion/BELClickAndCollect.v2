@@ -6,30 +6,18 @@
     {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
     {% block stylesheets %}
-        {############################################Google-font#########################################}
+        {# ###########################################Google-font######################################## #}
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
-        {############################################Favicon#########################################}
-        <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('images/apple-icon-57x57.png') }}">
-        <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('images/apple-icon-60x60.png') }}">
-        <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('images/apple-icon-72x72.png') }}">
-        <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('images/apple-icon-76x76.png') }}">
-        <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('images/apple-icon-114x114.png') }}">
-        <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('images/apple-icon-120x120.png') }}">
-        <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('images/apple-icon-144x144.png') }}">
-        <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('images/apple-icon-152x152.png') }}">
-        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/apple-icon-180x180.png') }}">
-        <link rel="icon" type="image/png" sizes="192x192"  href="{{ asset('images/android-icon-192x192.png') }}">
-        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon-32x32.png') }}">
-        <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('images/favicon-96x96.png') }}">
-        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon-16x16.png') }}">
-        <link rel="manifest" href="/manifest.json">
-        <meta name="msapplication-TileColor" content="#ffffff">
-        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-        <meta name="theme-color" content="#ffffff">
-        {############################################WebPack-encore#########################################}
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+        {# ###########################################Favicon######################################## #}
+
+        {# ###########################################WebPack-encore######################################## #}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
 
@@ -39,54 +27,115 @@
 </head>
 <body>
 <header>
-    <nav>
-        <div class="nav">
-            <img src="{{ asset('images/icones/icons8-library-64.png') }}" alt="icons8-library-64.png">
-            <h1>BEL click & collect'</h1>
 
-           {#Si l'utilisateur est connecté on affiche le bouton de déconnexion#}
-            {% if app.user %}
-            <a class="btn" href="{{ path('security_logout') }}">Déconnexion</a>
-                {% if is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('admin_dashboard') }}">BEL dashboard</a>
-                {% endif %}
-            {% endif %}
-        </div>
-        <div class="sub-nav">
-            <ul>
-                <li><a href="{{ path('index') }}">Accueil</a></li>
-                <li><a href="">Livres</a></li>
-                <li><a href="{{ path('search') }}">Rechercher</a></li>
-                <li><a href="">Charte d'utilisation</a></li>
-                <li><a href="{{ path('library') }}">ma bibliothèque</a></li>
-            </ul>
-
-        </div>
-    </nav>
-
-</header>
-<div class="container">
-{% block body %}{% endblock %}
-</div>
-
-<footer>
-    <nav>
-        <div class="nav">
-            <div class="prime-nav">
-            <img src="{{ asset('images/icones/icons8-library-64.png') }}" alt="icons8-library-64.png">
-            <h1>BEL click & collect'</h1>
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-contact">
+                <p>Contactez-nous au XX XX XX XX XX ou contact@digital-library.fr.</p>
             </div>
-        <div class="sub-nav">
-            <ul>
-                <li><a href=""><img src="{{ asset('images/icones/icons8-facebook-26.png') }}" alt=""></a></li>
-                <li><a href=""><img src="{{ asset('images/icones/icons8-twitter-26.png') }}" alt=""></a></li>
-                <li><a href=""><img src="{{ asset('images/icones/icons8-instagram-26.png') }}" alt=""></a></li>
-                <li><a href=""><img src="{{ asset('images/icones/icons8-linkedin-26.png') }}" alt=""></a></li>
-                <li><a href=""><img src="{{ asset('images/icones/icons8-pinterest-26.png') }}" alt=""></a></li>
-            </ul>
+            <div class="top-bar-account">
+                {# Si l'utilisateur est connecté on affiche le bouton de déconnexion #}
+                {% if app.user %}
+                    <a href="{{ path('security_logout') }}"><img
+                                src="{{ asset('images/icones/icons8-logout-rounded-left-14.png') }}" alt="icon_logout">Déconnexion</a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('admin_dashboard') }}"><img
+                                    src="{{ asset('images/icones/icons8-dashboard-14.png') }}" alt="icon_dashboard">tableau
+                            de bord</a>
+                    {% endif %}
+                {% endif %}
+            </div>
+
+            <div class="top-bar-social">
+                <a href=""><img src="{{ asset('images/icones/icons8-facebook-f-16.png') }}" alt="icon_facebook"></a>
+                <a href=""><img src="{{ asset('images/icones/icons8-twitter-16.png') }}" alt="icon_twitter"></a>
+                <a href=""><img src="{{ asset('images/icones/icons8-important-mail-16.png') }}" alt="icon_contact"></a>
+
+            </div>
         </div>
+    </div>
+
+    <div class="top-navbar">
+        <div class="navbar">
+            <div class="logo_navbar">
+                <div class="logo">
+                    <h1><img src="{{ asset('images/icones/icons8-smartphone-tablet-50.png') }}" alt="icon_library">Digital
+                    </h1>
+                    <h2>Library</h2>
+                </div>
+            </div>
+            <div class="menu_navbar">
+                <div class="menu">
+                    <a href="{{ path('index') }}">Accueil</a>
+                    <a href="">Livres</a>
+                    <a href="{{ path('search') }}">Rechercher</a>
+                    <a href="">Charte d'utilisation</a>
+                    <a href="{{ path('library') }}">ma bibliothèque</a>
+                </div>
+            </div>
         </div>
-    </nav>
+    </div>
+</header>
+
+
+{% block body %}{% endblock %}
+<footer>
+    <div class="bandeau-section">
+        <div class="title">
+            <h3><cite>“Le livre est l'opium de l'Occident.”</cite></h3>
+        </div>
+        <div class="breadcrumb">
+            <span> <figcaption> Anatole France</figcaption></span>
+        </div>
+    </div>
+
+    <div class="info">
+        <div class="about-us">
+            <div class="about-us-description">
+                <h4>a propos de nous</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias eligendi exercitationem libero non
+                    voluptatem.
+                    Architecto consequuntur cumque debitis dolorum eum eveniet, explicabo in incidunt iure mollitia nam
+                    officia
+                    quisquam saepe!</p>
+            </div>
+        </div>
+
+        <div class="social-network">
+            <h4>suivez-nous sur les réseaux sociaux</h4>
+            <div class="social-network-link">
+                <a href="#"><img src="{{ asset('images/icones/icons8-facebook-f-25.png') }}" alt=""></a>
+                <a href="#"><img src="{{ asset('images/icones/icons8-twitter-25.png') }}" alt=""></a>
+                <a href="#"><img src="{{ asset('images/icones/icons8-important-mail-25.png') }}" alt=""></a>
+            </div>
+        </div>
+
+        <div class="contact">
+            <div class="contact-us">
+                <h4>contact</h4>
+                <p>digital library</p>
+                <p>XX rue de la grande bibliothèque</p>
+                <p>XXXX la grande bibliothèque</p>
+                <p>france</p>
+                <a href="#">nous contactez</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="copyright">
+
+        <div class="date">
+            <p>&copy2021.digital library</p>
+        </div>
+        <div class="sub-footer">
+            <div class="footer-nav">
+                <a href="#">livres</a>
+                <a href="#">rechercher</a>
+                <a href="#">charte d'utilisation</a>
+                <a href="#">ma bibliothèque</a>
+            </div>
+        </div>
+    </div>
 </footer>
 </body>
 </html>

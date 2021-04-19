@@ -24,8 +24,10 @@ Encore
     .addEntry('home', './assets/app/home.js')
     .addEntry('search', './assets/app/search.js')
     .addEntry('login', './assets/app/login.js')
+    .addEntry('library', './assets/app/library.js')
 
     /*Admin*/
+    .addEntry('admin_dashboard', './assets/admin/admin_dashboard.js')
     .addEntry('admin_app', './assets/admin_app.js')
     .addEntry('admin_searchBooksApi', './assets/admin/api/admin_searchBooksApi.js')
     .addEntry('admin_listBooks', './assets/admin/admin_listBook.js')

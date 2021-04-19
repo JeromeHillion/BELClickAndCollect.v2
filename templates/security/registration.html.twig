@@ -1,6 +1,4 @@
-{% extends "base.html.twig" %}
-{% block title %}Inscription{% endblock %}
-{% block body %}
+{#
     <h1>Inscription sur le site</h1>
 
     {{form_start(form)}}
@@ -12,4 +10,50 @@
     {{form_row(form.confirm_password,{'label': 'Confirmer le mot de passe', 'attr' : {'placeholder': 'taper de nouveau votre mot de passe'}})}}
     <button type="submit">Inscription</button>
     {{form_end(form)}}
+{% endblock %}#}
+{% extends 'base.html.twig' %}
+{% block title %}Inscription{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('login') }}
+{% endblock %}
+{% block body %}
+    <div class="bandeau-section">
+        <div class="title">
+            <h2>Inscription</h2>
+        </div>
+        <div class="breadcrumb">
+            <span> accueil / inscription</span>
+        </div>
+    </div>
+    <div class="form-section">
+        <div class="form" style="width: 60rem">
+            <div class="form-title">
+                <h2>Inscription</h2>
+                <p>Pas encore client ?</p>
+                <p>En vous inscrivant, nous vous donnons un accès à notre bibliothèque digital. L'inscription ne vous prend pas plus de 1 minute ! </p>
+            </div>
+            <form>
+                {{form_start(form)}}
+                <div class="mail">
+                    {{form_row(form.firstname,{'label': 'Prénom', 'attr':{'placeholder':'votre prénom'}})}}
+                    {{form_row(form.username,{'label': 'Nom', 'attr' : {'placeholder': 'votre nom'}})}}
+                    {{form_row(form.email,{'label': 'Email', 'attr' : {'placeholder': 'votre email'}})}}
+                    {{form_row(form.avatar,{'label': 'Photo de profil', 'attr' : {'placeholder': 'votre photo de profil'}})}}
+
+                </div>
+
+                <div class="password">
+                    {{form_row(form.password,{'label': 'Mot de passe', 'attr' : {'placeholder': 'votre mot de passe'}})}}
+                    {{form_row(form.confirm_password,{'label': 'Confirmer le mot de passe', 'attr' : {'placeholder': 'taper de nouveau votre mot de passe'}})}}
+                </div>
+
+                <div class="btn-submit">
+                    <input type="submit" value="Inscription">
+                </div>
+
+            </form>
+        </div>
+    </div>
 {% endblock %}

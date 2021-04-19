@@ -12,7 +12,6 @@
 .cover-span {
     z-index: 2;
     bottom: 39rem;
-    color: #F7CFA3;
     width: 100%;
     max-width: 100%;
     text-align: center;
@@ -21,9 +20,9 @@
     align-self: center;
 }
 
-.cover-span span {
-    font-family: 'Fredoka One', cursive;
-    color: #24D1C6;
+.cover-span h3 {
+    color: #fff;
+    text-transform: uppercase;
 }
 
 .cover-span p {
@@ -32,15 +31,13 @@
     text-align: justify;
     width: 80%;
     margin: 0 auto;
-    -webkit-text-stroke: 0.5px;
-    -webkit-text-stroke-color: #000;
     padding: 3rem;
 }
 
 
 .cover-span a, article a {
     color: #fff;
-    border: solid 1px #126B65;
+    border: solid 1px #fff;
     border-radius: 0.2rem;
     width: 20%;
     padding: 0.3rem;
@@ -50,43 +47,44 @@
 }
 
 .cover-span a:hover {
-    background-color: #126B65;
+    background-color: #fff;
+    color: #126B65;
 }
 
-.article {
-    padding: 2rem;
-    border: solid 1px #126B65 ;
-    background-color: #fff;
+.msg_intro{
+    padding: 3.125rem 0;
+    background-color: #e9ecef;
     text-align: center;
-    height: 60rem;
 }
 
-article h2, article h4 {
-    margin: 0;
-    background-color: #fff;
-    border-left: solid 0.5rem #126B65;
-    text-align: start;
+.msg_intro article{
+    width:71.25rem ;
+    max-width: 71.25rem;
+    margin: 0 auto;
 }
 
 
-article p {
-    color: #424242;
-    text-align: justify ;
+.msg_intro h2{
+    letter-spacing: .1em;
+    font-size: 1.8rem;
+    color: #051622;
 }
-article a{
-    display: block;
+
+.msg_intro p{
+    font-family: 'Roboto', sans-serif;
     color: #000;
-    margin-top: 1rem;
+    font-weight: lighter;
+}
 
+.msg_intro a{
+    background-color: #051622;
+    text-decoration: none;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
 }
-article a:hover{
-   background-color: #126B65;
-    color:#fff;
-}
-.title{
-    width: 100%;
-    border-bottom: solid 1px #ccc;
-}
+
+
+
 iframe{
     text-align: center;
 }

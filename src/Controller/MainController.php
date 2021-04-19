@@ -33,7 +33,7 @@ class MainController extends abstractController
         return $this->render('library/index.html.twig');
     }
     /**
-     * @Route("/ma bibliothèque", name="library")
+     * @Route("/ma-bibliotheque", name="library")
      * @return Response
      */
     public function library()
