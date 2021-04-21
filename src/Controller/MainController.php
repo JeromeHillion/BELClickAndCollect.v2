@@ -5,6 +5,7 @@ namespace App\Controller;
 
 
 use App\Entity\User;
+use App\Repository\BooksRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -33,7 +34,7 @@ class MainController extends abstractController
         return $this->render('library/index.html.twig');
     }
     /**
-     * @Route("/ma-bibliotheque", name="library")
+     * @Route("/library/ma-bibliotheque", name="library")
      * @return Response
      */
     public function library()
@@ -53,7 +54,7 @@ class MainController extends abstractController
     }
 
     /**
-     * @Route("/rechercher", name="search")
+     * @Route("/library/rechercher", name="search")
      * @return Response
      */
     public function search()
@@ -70,5 +71,18 @@ class MainController extends abstractController
 
 
         return $this->render('library/search.html.twig');
+    }
+
+    /**
+     * @Route("/library/livres" , name="books")
+     */
+
+    public function books(BooksRepository $booksRepository){
+
+        $books= $booksRepository->findAll();
+
+        return $this->render('library/books.html.twig',[
+            "books" => $books
+        ]);
     }
 }

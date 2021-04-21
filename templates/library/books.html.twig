@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block title %}livres{% endblock %}
+{% block stylesheets %}
+    {# ###########################################WebPack-encore######################################## #}
+    {{ encore_entry_link_tags('books') }}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+
+    <div class="cards-section">
+        <div class="section">
+            {% for book in books %}
+                <div class="card">
+                    <img src="{{ book.cover }}"  alt="book_cover">
+                    <div class="info-section">
+                        <p><cite>{{ book.name }}</cite></p>
+                        <h3>Auteur(s)</h3>
+                        <p><cite>
+                                {% for author in book.author %}
+                                    {{ author }}
+                                {% endfor %}
+                            </cite></p>
+                        <a href="#">Voir les détails</a>
+                        <a href="{{path('cart_add', {'id': book.id})}}">panier</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+{% endblock %}
