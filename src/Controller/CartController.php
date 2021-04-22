@@ -15,11 +15,20 @@ class CartController extends abstractController
      * @Route("/library/panier", name="cart_index")
      */
 
-    public function index(CartService $cartService){
-        $cartData= $cartService->getFullCart();
+    public function index(CartService $cartService)
+    {
+        $cartDatas = $cartService->getFullCart();
+        /*dd($cartDatas);*/
+        /*foreach ($cartDatas as $cartData) {
 
-        return $this->render('Cart/index.html.twig',[
-           'items'=>$cartData
+
+               dd($cartData['book']->getCategory()[0]);
+
+
+        }*/
+
+        return $this->render('Cart/index.html.twig', [
+            'items' => $cartDatas
         ]);
     }
 
@@ -27,7 +36,8 @@ class CartController extends abstractController
      * @Route("/library/panier/add/{id}", name="cart_add")
      */
 
-    public function add($id,CartService $cartService){
+    public function add($id, CartService $cartService)
+    {
         $cartService->add($id);
 
         return $this->redirectToRoute("cart_index");

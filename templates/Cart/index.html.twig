@@ -7,25 +7,50 @@
 {% endblock %}
 
 {% block body %}
+    <div class="cart-container">
     {% if items | length > 0 %}
-        <div class="cart">
-        {% for item in items %}
-            <div class="book-cover">
-                <img src="{{ item.book.cover }}" alt="">
-            </div>
-            <div class="book-info">
-                <h3>{{ item.book.name }}</h3>
-                {% for authors in item.book.author %}
-                    <h4>{{ authors }}</h4>
-                {% endfor %}
-                {% for categories in item.book.category[1] %}
-                    <p>{{ categories }}</p>
-                {% endfor %}
-            </div>
-            <div class="book-quantity">
-                <h3>quantité :{{ item.quantity }}</h3>
-            </div>
-            </div>
-        {% endfor %}
-    {% endif %}
+    <div class="cart">
+        <table>
+            <thead>
+            <tr>
+                <th>image du livre</th>
+                <th>Nom</th>
+                <th>Auteur(e)(s)</th>
+                <th>catégorie</th>
+                <th>quantité</th>
+                <th>action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in items %}
+                <tr>
+                    <td><img src="{{ item.book.cover }}" alt=""></td>
+                    <td>{{ item.book.name }}</td>
+                    {% for authors in item.book.author %}
+                        <td>{{ authors }}</td>
+                    {% endfor %}
+                    <td>
+                        {{ item.book.category[0] }}
+                    </td>
+                    <td>quantité {{ item.quantity }}</td>
+                    <td>
+                        <div class="card-action">
+                        <div class="cart-delete">
+                            <a href="#"><img src="{{ asset('images/icones/icons8-trash-26.png') }}" alt="icon_trash"></a>
+                        </div>
+                        <div class="cart-plus">
+                            <a href="#"><img src="{{ asset('images/icones/icons8-plus-math-26.png') }}" alt="icon_trash"></a>
+                        </div>
+                        <div class="cart-less">
+                            <a href="#"><img src="{{ asset('images/icones/icons8-subtract-26.png') }}" alt="icon_trash"></a>
+                        </div>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+    </div>
 {% endblock %}

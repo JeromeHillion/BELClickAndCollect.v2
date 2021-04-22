@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use App\Api\callApi;
+use App\Service\Api\callApi;
 use App\Repository\BooksRepository;
 use Doctrine\ORM\Mapping as ORM;
 
