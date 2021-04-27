@@ -23,12 +23,14 @@
             </thead>
             <tbody>
             {% for item in items %}
-                <tr>
+                <tr id="book_{{item.book.id}}">
                     <td><img src="{{ item.book.cover }}" alt=""></td>
                     <td>{{ item.book.name }}</td>
+                    <td>
                     {% for authors in item.book.author %}
-                        <td>{{ authors }}</td>
+                        {{ authors }}
                     {% endfor %}
+                    </td>
                     <td>
                         {{ item.book.category[0] }}
                     </td>
@@ -36,10 +38,10 @@
                     <td>
                         <div class="card-action">
                         <div class="cart-delete">
-                            <a href="#"><img src="{{ asset('images/icones/icons8-trash-26.png') }}" alt="icon_trash"></a>
+                            <a id="btn_delete" href="{{path('cart_delete', {'id':item.book.id})}}"><img src="{{ asset('images/icones/icons8-trash-26.png') }}" alt="icon_trash"></a>
                         </div>
                         <div class="cart-plus">
-                            <a href="#"><img src="{{ asset('images/icones/icons8-plus-math-26.png') }}" alt="icon_trash"></a>
+                            <a id="btn_add_quantity" href="{{path('cart_plus')}}"><img src="{{ asset('images/icones/icons8-plus-math-26.png') }}" alt="icon_trash"></a>
                         </div>
                         <div class="cart-less">
                             <a href="#"><img src="{{ asset('images/icones/icons8-subtract-26.png') }}" alt="icon_trash"></a>
@@ -50,7 +52,14 @@
             {% endfor %}
             </tbody>
         </table>
+        {% else %}
+        <p>Votre panier est vide...</p>
         {% endif %}
     </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    {{ encore_entry_script_tags('cart') }}
 {% endblock %}

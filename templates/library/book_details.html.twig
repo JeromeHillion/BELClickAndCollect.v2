@@ -1,0 +1,34 @@
+{% extends 'base.html.twig'%}
+{% block title %}Détails{% endblock  %}
+{% block body %}
+    <div class="bandeau-section">
+        <div class="title">
+            <h2>Détails</h2>
+        </div>
+        <div class="breadcrumb">
+            <span> accueil / livres / détails</span>
+        </div>
+    </div>
+    <div class="book-section">
+        <div class="book-cover">
+            <img src="{{ book.cover }}" alt="book_cover">
+        </div>
+        <div class="book-info">
+            <h2>{{ book.name }}</h2>
+            <h3>
+            {% for authors in book.author %}
+                {{ authors }}
+            {% endfor %}
+            </h3>
+            <p>
+            {% for categories in book.category %}
+                {{ categories }}
+            {% endfor %}
+          </p>
+        </div>
+        <div class="book-description">
+            <cite>{{ book.summary }}</cite>
+        </div>
+        <a href="{{path('cart_add', {'id': book.id})}}">ajouter au panier</a>
+    </div>
+{% endblock  %}

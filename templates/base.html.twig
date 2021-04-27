@@ -38,6 +38,7 @@
                 {% if app.user %}
                     <a href="{{ path('security_logout') }}"><img
                                 src="{{ asset('images/icones/icons8-logout-rounded-left-14.png') }}" alt="icon_logout">Déconnexion</a>
+                    <a href="{{path('cart_index')}}">voir son panier</a>
                     {% if is_granted('ROLE_ADMIN') %}
                         <a href="{{ path('admin_dashboard') }}"><img
                                     src="{{ asset('images/icones/icons8-dashboard-14.png') }}" alt="icon_dashboard">tableau

@@ -18,14 +18,6 @@ class CartController extends abstractController
     public function index(CartService $cartService)
     {
         $cartDatas = $cartService->getFullCart();
-        /*dd($cartDatas);*/
-        /*foreach ($cartDatas as $cartData) {
-
-
-               dd($cartData['book']->getCategory()[0]);
-
-
-        }*/
 
         return $this->render('Cart/index.html.twig', [
             'items' => $cartDatas
@@ -40,7 +32,45 @@ class CartController extends abstractController
     {
         $cartService->add($id);
 
-        return $this->redirectToRoute("cart_index");
+        return $this->json([
+            'code' => 200,
+            'message' => 'Le livre a bien été ajouté !',
+            'id' => $id
+        ]);
+
+    }
+
+    /**
+     * @Route("/library/panier/delete/{id}", name="cart_delete")
+     */
+
+    public function delete($id, CartService $cartService)
+    {
+        $cartService->delete($id);
+
+        return $this->json([
+            'code' => 200,
+            'message' => 'Le livre a bien été supprimé !',
+            'id' => $id
+        ]);
+
+    }
+
+    
+
+    /**
+     * @Route("/library/panier/more", name="cart_plus")
+     */
+
+    public function more(CartService $cartService)
+    {
+        $cart = $cartService->getFullCart();
+      
+
+        return $this->json([
+            'code' => 200,
+            'cart' => $cart
+        ]);
 
     }
 }

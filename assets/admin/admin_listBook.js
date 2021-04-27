@@ -13,19 +13,17 @@ async function deleteBook(event){
      event.preventDefault();
     const url =this.href;
 
-const tbody =document.querySelector('tbody')
+const tbody =document.querySelector('tbody');
   
     axios.get(url).then(function (response) {
        console.log(response);
 
-       const line = document.getElementById(response.data.id)
+       const line = document.getElementById(response.data.id);
         tbody.removeChild(line);
     });
 
 
 }
-
-
 
 //On attend que le DOM se charge
 document.addEventListener('DOMContentLoaded', () => {

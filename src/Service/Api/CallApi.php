@@ -7,7 +7,7 @@ namespace App\Service\Api;
 use App\Entity\Books;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-class callApi
+class CallApi
 {
     private $client;
 

@@ -265,24 +265,22 @@ footer {
     color: #126B65;
 
 }
-/*.contact-us{
+.bandeau-section {
+    max-width: 100%;
+    background-image: linear-gradient(rgba(27, 160, 152, 0.6), rgba(18, 107, 101, 0.6)), url("/public/images/pexels-brett-sayles-1493759.jpg");
+    background-size: cover;
+    padding: 1rem;
+    z-index: 1;
     display: flex;
-    flex-direction: column;
-    flex: 1;
     align-items: center;
-}*/
+    justify-content: space-evenly;
 
-/*
-footer.nav{
-    display: flex;
+
+
 }
-footer .prime-nav{
-    display: flex;
-    flex: 1;
-    background-color: #F7CFA3;
-    padding: 0.4rem;
+.bandeau-section h2, .bandeau-section span{
+    color: #FFFFFF;
+    text-transform: uppercase;
+
+
 }
-footer .prime-nav h1{
-    align-self: center;
-    color: #051622;
-}*/

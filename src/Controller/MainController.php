@@ -85,4 +85,17 @@ class MainController extends abstractController
             "books" => $books
         ]);
     }
+
+    /**
+     * @Route("/library/livres/details/{id}", name="book_details")
+     */
+
+    public function book_details($id, BooksRepository $booksRepository){
+
+        $book = $booksRepository->find($id);
+
+       return $this->render('library/book_details.html.twig', [
+           'book' => $book
+       ]);
+    }
 }

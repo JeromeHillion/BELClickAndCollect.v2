@@ -4,7 +4,7 @@
 namespace App\Controller;
 
 
-use App\Service\Api\callApi;
+use App\Service\Api\CallApi;
 use App\Entity\Books;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -26,7 +26,7 @@ class ApiController extends abstractController
     /**
      * @Route("/admin/api/reqSearchBooksApi/{name}")
      */
-    public function reqSearchBooksApi(callApi $callApi, string $name)
+    public function reqSearchBooksApi(CallApi $callApi, string $name)
     {
 
         $books = $callApi->getBookData($name);
@@ -60,7 +60,7 @@ class ApiController extends abstractController
             'message' => 'Livres trouvées !',
             'books' => $arrayBook
             /*   'bookTitle' => $bookTitle*/
-        ], 200);
+        ]);
 
     }
 

@@ -5,10 +5,16 @@
     {{ encore_entry_link_tags('search') }}
 {% endblock %}
 {% block body %}
-
+    <div class="bandeau-section">
+        <div class="title">
+            <h2>rechercher</h2>
+        </div>
+        <div class="breadcrumb">
+            <span> accueil / rechercher</span>
+        </div>
+    </div>
     <div class="article">
         <article>
-            <a href="{{ path('index') }}">accueill ></a><a href="{{ path('search') }}">rechercher ></a>
             <div class="title">
                 <h4>Votre</h4>
                 <h2>Recherche</h2>

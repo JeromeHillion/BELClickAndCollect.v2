@@ -6,7 +6,14 @@
     {{ parent() }}
 {% endblock %}
 {% block body %}
-
+    <div class="bandeau-section">
+        <div class="title">
+            <h2>Livres</h2>
+        </div>
+        <div class="breadcrumb">
+            <span> accueil / livres</span>
+        </div>
+    </div>
     <div class="cards-section">
         <div class="section">
             {% for book in books %}
@@ -20,8 +27,8 @@
                                     {{ author }}
                                 {% endfor %}
                             </cite></p>
-                        <a href="#">Voir les détails</a>
-                        <a href="{{path('cart_add', {'id': book.id})}}">panier</a>
+                        <a href="{{path('book_details', {'id':book.id})}}">Voir les détails</a>
+                        <a id ="btn_add" href="{{path('cart_add', {'id': book.id})}}">ajouter au panier</a>
                     </div>
                 </div>
             {% endfor %}
@@ -29,4 +36,9 @@
     </div>
 
 
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    {{ encore_entry_script_tags('cart') }}
 {% endblock %}

@@ -12,25 +12,37 @@ class CartService
 {
     protected $session;
     protected $booksRepository;
-    public function __construct(SessionInterface $session, BooksRepository $booksRepository){
+    public function __construct(SessionInterface $session, BooksRepository $booksRepository)
+    {
         $this->session = $session;
-        $this->booksRepository =$booksRepository;
-
+        $this->booksRepository = $booksRepository;
     }
-    public function add(int $id){
+
+    /*Fonction qu va permettre d'ajouter un livre dans le panier */
+    public function add(int $id)
+    {
         $cart = $this->session->get('cart', []);
 
-        if (!empty($cart[$id])){
+        if (!empty($cart[$id])) {
             $cart[$id]++;
-        }
-
-        else{
+        } else {
             $cart[$id] = 1;
         }
 
         $this->session->set('cart', $cart);
     }
-   /* public function remove(int $id){}*/
+
+    /*Fonction qu va permettre de un livre dans le panier */
+    public function delete(int $id)
+    {
+        $cart = $this->session->get('cart', []);
+
+        if (!empty($cart[$id])) {
+            unset($cart[$id]);
+        }
+
+        $this->session->set('cart', $cart);
+    }
     public function getFullCart(): array
     {
         $cart = $this->session->get('cart', []);
@@ -45,6 +57,4 @@ class CartService
         /*dd($cartData);*/
         return $cartData;
     }
-
-
 }
